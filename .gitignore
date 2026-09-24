@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+.DS_Store
+
+# artefacts written to the repo root by notebooks 00-05 (regenerated on every run)
+/*.json
+/*.png
+/*.qpy
