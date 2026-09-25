@@ -1,0 +1,82 @@
+{
+  "2_qubit": {
+    "original_depth": 6,
+    "original_gate_counts": {
+      "ry": 3,
+      "measure": 3,
+      "cry": 2,
+      "cx": 1,
+      "barrier": 1
+    },
+    "transpiled_depth": 33,
+    "transpiled_gate_counts": {
+      "sx": 20,
+      "rz": 14,
+      "cz": 8,
+      "measure": 3,
+      "barrier": 1
+    },
+    "coupling_map_edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "native_gates": [
+      "rz",
+      "sx",
+      "x",
+      "cz"
+    ]
+  },
+  "3_qubit": {
+    "original_depth": 8,
+    "original_gate_counts": {
+      "ry": 4,
+      "measure": 4,
+      "cry": 3,
+      "cx": 2,
+      "barrier": 1
+    },
+    "transpiled_depth": 56,
+    "transpiled_gate_counts": {
+      "sx": 33,
+      "rz": 23,
+      "cz": 14,
+      "measure": 4,
+      "barrier": 1
+    },
+    "coupling_map_edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "native_gates": [
+      "rz",
+      "sx",
+      "x",
+      "cz"
+    ]
+  }
+}

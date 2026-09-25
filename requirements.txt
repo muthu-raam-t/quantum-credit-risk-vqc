@@ -1,0 +1,10 @@
+qiskit>=1.2
+qiskit-aer>=0.15
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.7
+pylatexenc>=2.10      # circuit drawings (circuit.draw("mpl"))
+jupyter
+nbclient>=0.9         # used by run_pipeline.py to execute the notebooks
+nbformat>=5.9
+ipykernel

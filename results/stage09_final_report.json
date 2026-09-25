@@ -1,0 +1,499 @@
+{
+  "config": {
+    "P0": 0.25,
+    "RHO": 0.027,
+    "LGD": 1000,
+    "Z_MAX": 3.0,
+    "CONFIDENCE": 0.95,
+    "NATIVE_GATES": [
+      "rz",
+      "sx",
+      "x",
+      "cz"
+    ],
+    "COUPLING_EDGES": {
+      "2": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "3": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    "DEPOL_1Q": 0.002,
+    "DEPOL_2Q": 0.015,
+    "READOUT_ERRORS": [
+      [
+        0.03,
+        0.06
+      ],
+      [
+        0.025,
+        0.055
+      ],
+      [
+        0.035,
+        0.07
+      ],
+      [
+        0.02,
+        0.05
+      ],
+      [
+        0.03,
+        0.065
+      ]
+    ],
+    "SHOTS_CALIBRATION": 4000,
+    "SHOTS_FINAL_CHECK": 20000,
+    "SPSA_ITERATIONS": 150,
+    "BO_BUDGET": {
+      "loader": 40,
+      "gci": 70
+    },
+    "BO_SEARCH_HALF_WIDTH_DEG": 45.0,
+    "SHOTS_EXECUTION": 20000,
+    "N_REPEATS": 20,
+    "ZNE_SCALE_FACTORS": [
+      1,
+      3,
+      5
+    ],
+    "FIDELITY_THRESHOLD": 0.97
+  },
+  "threshold": 0.97,
+  "2_qubit": {
+    "fidelity_table": {
+      "ideal_noiseless": {
+        "F_vs_ideal_mean": 1.0,
+        "F_vs_ideal_std": 0.0,
+        "F_vs_classical_joint_mean": 0.9999920437008502,
+        "F_vs_classical_joint_std": 1.1102230246251565e-16,
+        "F_loss_distribution_vs_classical": 0.9999945447851308,
+        "F_z_marginal_vs_target_gaussian": 0.9999997118330836,
+        "VaR95": 1000.0,
+        "VaR95_matches_classical": true,
+        "VaR95_all_repeats_match": true,
+        "expected_loss": 252.4674809768666,
+        "expected_loss_std": 0.0,
+        "p_loss_le_0": 0.7475325190231333
+      },
+      "noisy_uncalibrated": {
+        "F_vs_ideal_mean": 0.8794493379224171,
+        "F_vs_ideal_std": 0.0025669096919459797,
+        "F_vs_classical_joint_mean": 0.8801910084213578,
+        "F_vs_classical_joint_std": 0.0025613969414521234,
+        "F_loss_distribution_vs_classical": 0.9912587849823628,
+        "F_z_marginal_vs_target_gaussian": 0.8940450797878062,
+        "VaR95": 1000.0,
+        "VaR95_matches_classical": true,
+        "VaR95_all_repeats_match": true,
+        "expected_loss": 174.14249999999998,
+        "expected_loss_std": 3.1371673130389497,
+        "p_loss_le_0": 0.8258575
+      },
+      "uncalibrated_REM": {
+        "F_vs_ideal_mean": 0.9217687904894627,
+        "F_vs_ideal_std": 0.002728620672927032,
+        "F_vs_classical_joint_mean": 0.9225604139325858,
+        "F_vs_classical_joint_std": 0.0027164847164694327,
+        "F_loss_distribution_vs_classical": 0.9889396753097153,
+        "F_z_marginal_vs_target_gaussian": 0.9396266805717155,
+        "VaR95": 1000.0,
+        "VaR95_matches_classical": true,
+        "VaR95_all_repeats_match": true,
+        "expected_loss": 165.33493658558226,
+        "expected_loss_std": 3.378971972917349,
+        "p_loss_le_0": 0.8346650634144177
+      },
+      "6A_grid_REM": {
+        "F_vs_ideal_mean": 0.9390814645323265,
+        "F_vs_ideal_std": 0.0022212107762582317,
+        "F_vs_classical_joint_mean": 0.9393883928928796,
+        "F_vs_classical_joint_std": 0.0022173543126160246,
+        "F_loss_distribution_vs_classical": 0.9999552194377705,
+        "F_z_marginal_vs_target_gaussian": 0.9437035786467338,
+        "VaR95": 1000.0,
+        "VaR95_matches_classical": true,
+        "VaR95_all_repeats_match": true,
+        "expected_loss": 244.6646375189825,
+        "expected_loss_std": 2.846970837243229,
+        "p_loss_le_0": 0.7553353624810175
+      },
+      "6B_auto_REM": {
+        "F_vs_ideal_mean": 0.9819077860853899,
+        "F_vs_ideal_std": 0.0016169648989793673,
+        "F_vs_classical_joint_mean": 0.9820214499241595,
+        "F_vs_classical_joint_std": 0.0016149845049012001,
+        "F_loss_distribution_vs_classical": 0.9993477350159171,
+        "F_z_marginal_vs_target_gaussian": 0.9836880956534071,
+        "VaR95": 1000.0,
+        "VaR95_matches_classical": true,
+        "VaR95_all_repeats_match": true,
+        "expected_loss": 272.89001428143666,
+        "expected_loss_std": 3.49858707725953,
+        "p_loss_le_0": 0.7271099857185633
+      },
+      "6B_auto_REM_ZNE": {
+        "F_vs_ideal_mean": 0.9983042959884912,
+        "F_vs_ideal_std": 0.0007250289924772663,
+        "F_vs_classical_joint_mean": 0.9982959717612788,
+        "F_vs_classical_joint_std": 0.0007185557192291192,
+        "F_loss_distribution_vs_classical": 0.9999234633517293,
+        "F_z_marginal_vs_target_gaussian": 0.9993588806348432,
+        "VaR95": 1000.0,
+        "VaR95_matches_classical": true,
+        "VaR95_all_repeats_match": true,
+        "expected_loss": 258.0596542361903,
+        "expected_loss_std": 4.564433236279618,
+        "p_loss_le_0": 0.7419403457638098
+      }
+    },
+    "deployed_pipeline": "6B_auto_REM",
+    "deployed_fidelity": 0.9819077860853899,
+    "decision": "ACCEPT",
+    "loop_day1": {
+      "rounds": [
+        {
+          "round": 0,
+          "fidelity": 0.9818216542067787,
+          "fidelity_std": 0.0007224808490463396,
+          "decision": "ACCEPT",
+          "cumulative_calibration_evals": 0,
+          "x_deg": [
+            70.39768862762912,
+            224.51487555609924,
+            50.85462793459052,
+            -6.82359957469429
+          ]
+        }
+      ],
+      "final_parameters": [
+        1.2286714523458966,
+        3.9185237981592667,
+        0.887580697335288,
+        -0.11909427941610011
+      ],
+      "accepted": true,
+      "total_recalibration_evals": 0,
+      "drift": [
+        {
+          "logical_qubit": 0,
+          "physical_qubit": 2,
+          "eps": 0.14,
+          "delta_deg": 10.0
+        },
+        {
+          "logical_qubit": 1,
+          "physical_qubit": 1,
+          "eps": -0.1,
+          "delta_deg": -14.999999999999998
+        },
+        {
+          "logical_qubit": 2,
+          "physical_qubit": 3,
+          "eps": -0.11,
+          "delta_deg": -12.000000000000002
+        }
+      ]
+    },
+    "loop_day2_drift_event": {
+      "rounds": [
+        {
+          "round": 0,
+          "fidelity": 0.5283244509025775,
+          "fidelity_std": 0.0020883903713895006,
+          "decision": "RE-CALIBRATE",
+          "cumulative_calibration_evals": 0,
+          "x_deg": [
+            70.39768862762912,
+            224.51487555609924,
+            50.85462793459052,
+            -6.82359957469429
+          ]
+        },
+        {
+          "round": 1,
+          "fidelity": 0.9715384812668496,
+          "fidelity_std": 0.0010198287854747416,
+          "decision": "ACCEPT",
+          "cumulative_calibration_evals": 204,
+          "x_deg": [
+            106.88709244974307,
+            147.65557446401237,
+            63.688798627095174,
+            -44.03413691103703
+          ]
+        }
+      ],
+      "final_parameters": [
+        1.865531691131588,
+        2.5770759333206774,
+        1.111579232682455,
+        -0.7685406723715615
+      ],
+      "accepted": true,
+      "total_recalibration_evals": 204,
+      "drift": [
+        {
+          "logical_qubit": 0,
+          "physical_qubit": 2,
+          "eps": -0.12,
+          "delta_deg": -13.0
+        },
+        {
+          "logical_qubit": 1,
+          "physical_qubit": 1,
+          "eps": 0.13,
+          "delta_deg": 11.0
+        },
+        {
+          "logical_qubit": 2,
+          "physical_qubit": 3,
+          "eps": 0.11,
+          "delta_deg": 12.000000000000002
+        }
+      ]
+    },
+    "classical_var95": 1000.0,
+    "classical_mc_var95": 1000.0
+  },
+  "3_qubit": {
+    "fidelity_table": {
+      "ideal_noiseless": {
+        "F_vs_ideal_mean": 0.9999999999999998,
+        "F_vs_ideal_std": 0.0,
+        "F_vs_classical_joint_mean": 0.7828757207922725,
+        "F_vs_classical_joint_std": 0.0,
+        "F_loss_distribution_vs_classical": 0.9999742685044277,
+        "F_z_marginal_vs_target_gaussian": 0.7828854810073195,
+        "VaR95": 1000.0,
+        "VaR95_matches_classical": true,
+        "VaR95_all_repeats_match": true,
+        "expected_loss": 254.38988870958502,
+        "expected_loss_std": 5.684341886080802e-14,
+        "p_loss_le_0": 0.7456101112904151
+      },
+      "noisy_uncalibrated": {
+        "F_vs_ideal_mean": 0.9188541254678148,
+        "F_vs_ideal_std": 0.00181027478371633,
+        "F_vs_classical_joint_mean": 0.775214302739925,
+        "F_vs_classical_joint_std": 0.0020881885685785297,
+        "F_loss_distribution_vs_classical": 0.9948751433834278,
+        "F_z_marginal_vs_target_gaussian": 0.7824287186063287,
+        "VaR95": 1000.0,
+        "VaR95_matches_classical": true,
+        "VaR95_all_repeats_match": true,
+        "expected_loss": 190.70999999999998,
+        "expected_loss_std": 2.710332082974334,
+        "p_loss_le_0": 0.8092900000000001
+      },
+      "uncalibrated_REM": {
+        "F_vs_ideal_mean": 0.9086770300441044,
+        "F_vs_ideal_std": 0.002522921757410691,
+        "F_vs_classical_joint_mean": 0.7473081143002833,
+        "F_vs_classical_joint_std": 0.0031230438661351096,
+        "F_loss_distribution_vs_classical": 0.99357708219266,
+        "F_z_marginal_vs_target_gaussian": 0.7578473081144281,
+        "VaR95": 1000.0,
+        "VaR95_matches_classical": true,
+        "VaR95_all_repeats_match": true,
+        "expected_loss": 184.01456203547477,
+        "expected_loss_std": 2.9176376381559734,
+        "p_loss_le_0": 0.8159854379645252
+      },
+      "6A_grid_REM": {
+        "F_vs_ideal_mean": 0.9564045270703143,
+        "F_vs_ideal_std": 0.001474690768502953,
+        "F_vs_classical_joint_mean": 0.7802004465538696,
+        "F_vs_classical_joint_std": 0.004404953571808449,
+        "F_loss_distribution_vs_classical": 0.9997960164735102,
+        "F_z_marginal_vs_target_gaussian": 0.7836267632098551,
+        "VaR95": 1000.0,
+        "VaR95_matches_classical": true,
+        "VaR95_all_repeats_match": true,
+        "expected_loss": 262.45344458199156,
+        "expected_loss_std": 2.1248037788550107,
+        "p_loss_le_0": 0.7375465554180085
+      },
+      "6B_auto_REM": {
+        "F_vs_ideal_mean": 0.9945688122558763,
+        "F_vs_ideal_std": 0.00067216740508022,
+        "F_vs_classical_joint_mean": 0.8149147066303666,
+        "F_vs_classical_joint_std": 0.005627828315294347,
+        "F_loss_distribution_vs_classical": 0.9998325743201626,
+        "F_z_marginal_vs_target_gaussian": 0.8188770360771619,
+        "VaR95": 1000.0,
+        "VaR95_matches_classical": true,
+        "VaR95_all_repeats_match": true,
+        "expected_loss": 261.2724641505091,
+        "expected_loss_std": 3.5978471468007434,
+        "p_loss_le_0": 0.7387275358494909
+      },
+      "6B_auto_REM_ZNE": {
+        "F_vs_ideal_mean": 0.995837380060925,
+        "F_vs_ideal_std": 0.0008261277880699324,
+        "F_vs_classical_joint_mean": 0.7999978200120662,
+        "F_vs_classical_joint_std": 0.005679232793539887,
+        "F_loss_distribution_vs_classical": 0.9994465230447379,
+        "F_z_marginal_vs_target_gaussian": 0.8024004945469521,
+        "VaR95": 1000.0,
+        "VaR95_matches_classical": true,
+        "VaR95_all_repeats_match": true,
+        "expected_loss": 229.89278497886795,
+        "expected_loss_std": 4.238017961605596,
+        "p_loss_le_0": 0.7701072150211321
+      }
+    },
+    "deployed_pipeline": "6B_auto_REM",
+    "deployed_fidelity": 0.9945688122558763,
+    "decision": "ACCEPT",
+    "loop_day1": {
+      "rounds": [
+        {
+          "round": 0,
+          "fidelity": 0.9943114215181855,
+          "fidelity_std": 0.0011161630913395456,
+          "decision": "ACCEPT",
+          "cumulative_calibration_evals": 0,
+          "x_deg": [
+            115.0136200340059,
+            34.373900167321786,
+            109.91799838173405,
+            55.322763986641256,
+            -5.284054504777984
+          ]
+        }
+      ],
+      "final_parameters": [
+        2.0073663542311153,
+        0.599937734671595,
+        1.918430978963058,
+        0.9655643828706342,
+        -0.09222414896321426
+      ],
+      "accepted": true,
+      "total_recalibration_evals": 0,
+      "drift": [
+        {
+          "logical_qubit": 0,
+          "physical_qubit": 3,
+          "eps": -0.11,
+          "delta_deg": -12.000000000000002
+        },
+        {
+          "logical_qubit": 1,
+          "physical_qubit": 2,
+          "eps": 0.14,
+          "delta_deg": 10.0
+        },
+        {
+          "logical_qubit": 2,
+          "physical_qubit": 4,
+          "eps": 0.1,
+          "delta_deg": 14.0
+        },
+        {
+          "logical_qubit": 3,
+          "physical_qubit": 1,
+          "eps": -0.1,
+          "delta_deg": -14.999999999999998
+        }
+      ]
+    },
+    "loop_day2_drift_event": {
+      "rounds": [
+        {
+          "round": 0,
+          "fidelity": 0.6760762403683845,
+          "fidelity_std": 0.0022848895557966748,
+          "decision": "RE-CALIBRATE",
+          "cumulative_calibration_evals": 0,
+          "x_deg": [
+            115.0136200340059,
+            34.373900167321786,
+            109.91799838173405,
+            55.322763986641256,
+            -5.284054504777984
+          ]
+        },
+        {
+          "round": 1,
+          "fidelity": 0.9917119280211936,
+          "fidelity_std": 0.0010479823271623031,
+          "decision": "ACCEPT",
+          "cumulative_calibration_evals": 204,
+          "x_deg": [
+            71.89964870137487,
+            75.13119938651012,
+            159.26577374328,
+            37.150963596240246,
+            -5.6354165637287466
+          ]
+        }
+      ],
+      "final_parameters": [
+        1.2548856008662568,
+        1.3112868002669453,
+        2.77971213755657,
+        0.6484066350429456,
+        -0.09835657375849148
+      ],
+      "accepted": true,
+      "total_recalibration_evals": 204,
+      "drift": [
+        {
+          "logical_qubit": 0,
+          "physical_qubit": 3,
+          "eps": 0.11,
+          "delta_deg": 12.000000000000002
+        },
+        {
+          "logical_qubit": 1,
+          "physical_qubit": 2,
+          "eps": -0.12,
+          "delta_deg": -13.0
+        },
+        {
+          "logical_qubit": 2,
+          "physical_qubit": 4,
+          "eps": -0.09,
+          "delta_deg": -10.0
+        },
+        {
+          "logical_qubit": 3,
+          "physical_qubit": 1,
+          "eps": 0.13,
+          "delta_deg": 11.0
+        }
+      ]
+    },
+    "classical_var95": 1000.0,
+    "classical_mc_var95": 1000.0
+  }
+}
