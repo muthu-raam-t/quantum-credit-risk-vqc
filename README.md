@@ -34,16 +34,16 @@ The diagram shows every block of the pipeline, the equation it implements, and w
 
 | Stage | Notebook | What it does |
 |---|---|---|
-| 0 | `00_overview.ipynb` | Problem, base-paper gaps, algorithms (VQC, parameter-shift, Adam), project novelty |
-| 1 | `01_classical_gci_model.ipynb` | Vasicek/GCI default model, discretised Gaussian targets, classical VaR baseline |
-| 2 | `02_quantum_encoding.ipynb` | Linearises the default curve so it can be written as a qubit rotation |
-| 3 | `03_circuit_design.ipynb` | Gaussian-loader register (R<sub>y</sub> + CNOT) plus a controlled-rotation asset qubit |
-| 4 | `04_classical_training.ipynb` | Trains the loader angles with exact parameter-shift gradients and Adam |
-| 5 | `05_transpilation.ipynb` | Maps the circuit to a native gate set and a limited-connectivity chip with SABRE |
-| 6 | `06_hardware_retuning.ipynb` | Builds the noisy device; **6A** paper grid sweep vs **6B** automated calibration |
-| 7 | `07_run_on_backend.ipynb` | 20 × 20 000-shot execution; readout mitigation and zero-noise extrapolation |
-| 8 | `08_classical_postprocessing.ipynb` | Turns bitstrings into a loss distribution (reproduces the paper's Fig. 10) |
-| 9 | `09_var_fidelity_check.ipynb` | VaR, Hellinger fidelities, ACCEPT / RE-CALIBRATE loop incl. a drift event |
+| 0 | [`00_overview.ipynb`](`00_overview.ipynb`) | Problem, base-paper gaps, algorithms (VQC, parameter-shift, Adam), project novelty |
+| 1 | [`01_classical_gci_model.ipynb`](`01_classical_gci_model.ipynb`) | Vasicek/GCI default model, discretised Gaussian targets, classical VaR baseline |
+| 2 | [`02_quantum_encoding.ipynb`](`02_quantum_encoding.ipynb`) | Linearises the default curve so it can be written as a qubit rotation |
+| 3 | [`03_circuit_design.ipynb`](`03_circuit_design.ipynb`) | Gaussian-loader register (R<sub>y</sub> + CNOT) plus a controlled-rotation asset qubit |
+| 4 | [`04_classical_training.ipynb`](`04_classical_training.ipynb`) | Trains the loader angles with exact parameter-shift gradients and Adam |
+| 5 | [`05_transpilation.ipynb`](`05_transpilation.ipynb`) | Maps the circuit to a native gate set and a limited-connectivity chip with SABRE |
+| 6 | [`06_hardware_retuning.ipynb`](`06_hardware_retuning.ipynb`) | Builds the noisy device; **6A** paper grid sweep vs **6B** automated calibration |
+| 7 | [`07_run_on_backend.ipynb`](`07_run_on_backend.ipynb`) | 20 × 20 000-shot execution; readout mitigation and zero-noise extrapolation |
+| 8 | [`08_classical_postprocessing.ipynb`](`08_classical_postprocessing.ipynb`) | Turns bitstrings into a loss distribution (reproduces the paper's Fig. 10) |
+| 9 | [`09_var_fidelity_check.ipynb`](`09_var_fidelity_check.ipynb`) | VaR, Hellinger fidelities, ACCEPT / RE-CALIBRATE loop incl. a drift event |
 
 ---
 
