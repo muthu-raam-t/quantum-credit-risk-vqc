@@ -8,3 +8,5 @@ jupyter
 nbclient>=0.9         # used by run_pipeline.py to execute the notebooks
 nbformat>=5.9
 ipykernel
+streamlit>=1.30          # interactive app (app.py)
+pandas>=2.0
