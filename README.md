@@ -75,6 +75,26 @@ The full pipeline (stages 00 → 09) runs in **about 1–2 minutes on a laptop C
 
 ---
 
+## Interactive app
+
+```bash
+streamlit run app.py
+```
+
+Opens a page in the browser where you describe a borrower and see the bank's risk numbers computed by the quantum circuit on the noisy chip, next to the classical answer. One run takes about 3–10 seconds.
+
+| Inputs (left sidebar) | Outputs (main page) |
+|---|---|
+| average default probability p₀, correlation ρ with the economy, loss given default, VaR confidence | default probability, expected loss, Value at Risk — quantum vs classical |
+| economy register (2 or 3 qubits) | default probability in each economy state, against the Vasicek curve |
+| calibration: none / 6A grid sweep (paper) / 6B automated (this project) | loss distribution (CDF) against classical Monte Carlo |
+| readout mitigation, zero-noise extrapolation, shots | the measured bitstring histogram, perfect chip vs noisy chip |
+| chip drift after calibration, closed-loop re-calibration | fidelity, ACCEPT / RE-CALIBRATE, and a stage-by-stage trace of the computation |
+
+**No dataset is needed.** As in the base paper, the input is a credit-risk *model*: a borrower is described by p₀ and ρ (in a bank these come from its credit rating and the Basel formula, which were estimated from historical default data), and the economy is a standard normal variable. Everything else is computed from those numbers.
+
+---
+
 ## Key results
 
 **Calibration on the noisy device (Stage 6, full GCI circuit)**
@@ -126,6 +146,7 @@ The full pipeline (stages 00 → 09) runs in **about 1–2 minutes on a laptop C
 ## Repository structure
 
 ```
+├── app.py                       interactive app (streamlit run app.py)
 ├── main.ipynb                   master notebook: runs the whole pipeline, shows results
 ├── run_pipeline.py              master script (same, from the terminal)
 ├── 00_overview.ipynb … 09_var_fidelity_check.ipynb    one narrated notebook per stage
@@ -144,6 +165,8 @@ The full pipeline (stages 00 → 09) runs in **about 1–2 minutes on a laptop C
 │   ├── metrics.py               Hellinger fidelity / distance
 │   ├── stages.py                computational core of stages 6–9
 │   ├── report.py                writes results/FINAL_REPORT.md
+│   ├── app_core.py              one full analysis for a user-chosen borrower (used by app.py)
+│   ├── app_worker.py            runs app_core in its own process for the app
 │   └── config.py, pipeline_io.py   shared settings and file handling
 ├── scripts/                     headless runner for every stage
 ├── results/                     JSON outputs, figures/, FINAL_REPORT.md
@@ -161,7 +184,7 @@ All settings — model parameters, noise levels, shot counts, optimiser budgets,
 
 ## Requirements
 
-Python 3.9+ · `qiskit` · `qiskit-aer` · `numpy` · `scipy` · `matplotlib` · `pylatexenc` · `jupyter` · `ipykernel` · `nbclient` · `nbformat` — all installed by `pip install -r requirements.txt`.
+Python 3.9+ · `qiskit` · `qiskit-aer` · `numpy` · `scipy` · `matplotlib` · `pylatexenc` · `jupyter` · `ipykernel` · `nbclient` · `nbformat` · `streamlit` · `pandas` — all installed by `pip install -r requirements.txt`.
 
 ---
 
