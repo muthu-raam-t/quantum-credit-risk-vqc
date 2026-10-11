@@ -16,6 +16,11 @@ Reproduces the method of the base paper (Ahmad et al., IEEE TQE 2026) on the emu
 | 9 | Hellinger fidelity and VaR check (no accept / reject gate) |
 | Drift | Chip drifts; the grid sweep is repeated by hand |
 
+## Shots (identical in both pipelines)
+- every calibration circuit run: 4000 shots (readout setup in the proposed work uses the same 4000)
+- every execution circuit run: 20000 shots, 20 repeats
+- fidelity check after a drift: 20000 shots
+
 ## How to run
 Open `base_paper.ipynb` with the `.venv` kernel and click Run All (about 15 s).
 It uses the shared code in `../src/`, so the folder must stay inside the project.

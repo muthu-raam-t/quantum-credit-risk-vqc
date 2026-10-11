@@ -1,86 +1,86 @@
 {
   "pipeline": "base_paper",
-  "started": "2026-10-11 11:05:34",
-  "finished": "2026-10-11 11:05:49",
-  "total_seconds": 14.874,
+  "started": "2026-10-11 16:28:35",
+  "finished": "2026-10-11 16:28:49",
+  "total_seconds": 13.467,
   "stages": [
     {
       "stage": "Stage 1 - Classical GCI model",
-      "start": "11:05:34.985",
-      "end": "11:05:35.743",
-      "seconds": 0.758,
+      "start": "16:28:35.876",
+      "end": "16:28:35.951",
+      "seconds": 0.075,
       "circuit_runs": 0,
       "shots": 0
     },
     {
       "stage": "Stage 2 - Quantum encoding",
-      "start": "11:05:35.752",
-      "end": "11:05:35.757",
-      "seconds": 0.005,
+      "start": "16:28:35.955",
+      "end": "16:28:35.956",
+      "seconds": 0.001,
       "circuit_runs": 0,
       "shots": 0
     },
     {
       "stage": "Stage 3 - Circuit design",
-      "start": "11:05:35.766",
-      "end": "11:05:35.770",
-      "seconds": 0.003,
+      "start": "16:28:35.961",
+      "end": "16:28:35.962",
+      "seconds": 0.001,
       "circuit_runs": 0,
       "shots": 0
     },
     {
       "stage": "Stage 4 - Classical training (parameter shift + Adam)",
-      "start": "11:05:35.779",
-      "end": "11:05:36.431",
-      "seconds": 0.652,
+      "start": "16:28:35.966",
+      "end": "16:28:36.337",
+      "seconds": 0.37,
       "circuit_runs": 0,
       "shots": 0
     },
     {
       "stage": "Stage 5 - Transpilation (SABRE) + noisy chip",
-      "start": "11:05:36.440",
-      "end": "11:05:36.559",
-      "seconds": 0.12,
+      "start": "16:28:36.342",
+      "end": "16:28:36.364",
+      "seconds": 0.023,
       "circuit_runs": 0,
       "shots": 0
     },
     {
       "stage": "Stage 6 - Calibration: manual grid sweep (6A)",
-      "start": "11:05:36.568",
-      "end": "11:05:42.370",
-      "seconds": 5.802,
+      "start": "16:28:36.370",
+      "end": "16:28:42.295",
+      "seconds": 5.925,
       "circuit_runs": 824,
       "shots": 3296000
     },
     {
       "stage": "Stage 7 - Execution (raw counts, no mitigation)",
-      "start": "11:05:42.380",
-      "end": "11:05:43.839",
-      "seconds": 1.458,
+      "start": "16:28:42.300",
+      "end": "16:28:43.393",
+      "seconds": 1.093,
       "circuit_runs": 40,
       "shots": 800000
     },
     {
       "stage": "Stage 8 - Classical post-processing",
-      "start": "11:05:43.847",
-      "end": "11:05:43.850",
-      "seconds": 0.003,
+      "start": "16:28:43.399",
+      "end": "16:28:43.400",
+      "seconds": 0.001,
       "circuit_runs": 0,
       "shots": 0
     },
     {
       "stage": "Stage 9 - Fidelity and VaR check",
-      "start": "11:05:43.857",
-      "end": "11:05:43.859",
-      "seconds": 0.002,
+      "start": "16:28:43.406",
+      "end": "16:28:43.407",
+      "seconds": 0.001,
       "circuit_runs": 0,
       "shots": 0
     },
     {
       "stage": "Drift event - repeat the manual grid sweep",
-      "start": "11:05:43.865",
-      "end": "11:05:49.840",
-      "seconds": 5.974,
+      "start": "16:28:43.413",
+      "end": "16:28:49.332",
+      "seconds": 5.919,
       "circuit_runs": 828,
       "shots": 3312000
     }

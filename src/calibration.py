@@ -57,6 +57,14 @@ def objective(device, reference, x, shots):
     return hellinger_distance(device.run(x, shots), reference)
 
 
+def objectives(device, reference, xs, shots, batch=False):
+    """Objective at several points. batch=True sends all circuits to the simulator in
+    ONE call (same circuits, same shots -- only fewer separate simulator calls)."""
+    if batch and hasattr(device, "run_many"):
+        return [hellinger_distance(p, reference) for p in device.run_many(list(xs), shots)]
+    return [objective(device, reference, x, shots) for x in xs]
+
+
 # =============================================================================
 # 6A -- baseline: coarse -> fine grid sweep (base paper)
 # =============================================================================
@@ -105,7 +113,7 @@ def grid_sweep(device, reference, x0, indices, coarse_axes, fine_half_widths, fi
 # 6B -- SPSA
 # =============================================================================
 def spsa(device, reference, x0, shots, n_iter=150, c=0.12, target_first_step=0.15,
-         alpha=0.602, gamma=0.101, seed=0, average_last=0.25):
+         alpha=0.602, gamma=0.101, seed=0, average_last=0.25, batch=False):
     """SPSA with Spall's standard gain sequences and automatic step-size calibration.
 
         a_k = a / (k + 1 + A)^alpha ,  c_k = c / (k + 1)^gamma
@@ -128,8 +136,7 @@ def spsa(device, reference, x0, shots, n_iter=150, c=0.12, target_first_step=0.1
     mags, history = [], []
     for _ in range(4):
         delta = rng.choice([-1.0, 1.0], size=d)
-        jp = objective(device, reference, x + c * delta, shots)
-        jm = objective(device, reference, x - c * delta, shots)
+        jp, jm = objectives(device, reference, [x + c * delta, x - c * delta], shots, batch)
         history += [jp, jm]
         mags.append(abs(jp - jm) / (2 * c))
     g0 = max(np.mean(mags), 1e-4)
@@ -140,8 +147,7 @@ def spsa(device, reference, x0, shots, n_iter=150, c=0.12, target_first_step=0.1
         ak = a / (k + 1 + A) ** alpha
         ck = c / (k + 1) ** gamma
         delta = rng.choice([-1.0, 1.0], size=d)
-        jp = objective(device, reference, x + ck * delta, shots)
-        jm = objective(device, reference, x - ck * delta, shots)
+        jp, jm = objectives(device, reference, [x + ck * delta, x - ck * delta], shots, batch)
         history += [jp, jm]
         ghat = (jp - jm) / (2 * ck) * delta
         x = x - ak * ghat
@@ -199,7 +205,7 @@ class _GP:
 
 
 def bayesian_opt(device, reference, x0, shots, budget=40, half_width=np.deg2rad(45),
-                 n_init=None, seed=0, xi=0.01):
+                 n_init=None, seed=0, xi=0.01, batch=False):
     """GP-EI Bayesian optimisation inside the box  x0 +/- half_width  (per angle).
 
     1. Evaluate x0 plus a Latin-hypercube initial design.
@@ -223,7 +229,7 @@ def bayesian_opt(device, reference, x0, shots, budget=40, half_width=np.deg2rad(
     for i in range(n_init - 1):
         U.append(np.array([(perms[j][i] + rng.random()) / (n_init - 1) for j in range(d)]))
     U = np.array(U)
-    y = np.array([objective(device, reference, to_x(u), shots) for u in U])
+    y = np.array(objectives(device, reference, [to_x(u) for u in U], shots, batch))
     history = y.tolist()
 
     gp = _GP()
@@ -254,11 +260,14 @@ def bayesian_opt(device, reference, x0, shots, budget=40, half_width=np.deg2rad(
 # =============================================================================
 # Scoring (not counted in any method's budget)
 # =============================================================================
-def score(device, reference, x, shots, seed=2024, repeats=3):
+def score(device, reference, x, shots, seed=2024, repeats=3, batch=False):
     """Hellinger fidelity of the device output at x vs the reference (mean over repeats)."""
     from .metrics import hellinger_fidelity
     n_e, n_s = device.n_evals, device.n_shots
-    f = [hellinger_fidelity(device.run(x, shots, seed=seed + r), reference) for r in range(repeats)]
+    if batch and hasattr(device, "run_many"):
+        f = [hellinger_fidelity(p, reference) for p in device.run_many([x] * repeats, shots, seed=seed)]
+    else:
+        f = [hellinger_fidelity(device.run(x, shots, seed=seed + r), reference) for r in range(repeats)]
     device.n_evals, device.n_shots = n_e, n_s
     return float(np.mean(f)), float(np.std(f))
 
@@ -281,6 +290,9 @@ class SubspaceDevice:
     def run(self, y, shots, seed=None):
         return self.device.run(self._full(y), shots, seed)
 
+    def run_many(self, ys, shots, seed=None):
+        return self.device.run_many([self._full(y) for y in ys], shots, seed)
+
     def reset_counters(self):
         self.device.reset_counters()
 
@@ -295,7 +307,8 @@ class SubspaceDevice:
 
 def hierarchical_calibration(gci_dev, gci_ref, x_start, loader_dev, loader_ref,
                              shots, loader_budget=40, asset_budget=30, refine_iter=60,
-                             half_width=np.deg2rad(45), seed=0, loader_result=None):
+                             half_width=np.deg2rad(45), seed=0, loader_result=None,
+                             batch=False, verify_shots=None):
     """6B -- automated, closed-loop version of the base paper's own workflow.
 
     Step 1  Bayesian optimisation of the z-register (loader) angles on the stand-alone
@@ -308,6 +321,10 @@ def hierarchical_calibration(gci_dev, gci_ref, x_start, loader_dev, loader_ref,
             high-shot run and the better one is kept (SPSA can overshoot)
 
     `loader_result` lets a caller reuse an already-computed Step 1.
+    `batch=True` groups independent circuit evaluations (BO initial design, the SPSA
+    +/- pair, the verification repeats) into single simulator calls. The algorithm,
+    circuits, shots and number of runs are unchanged; only wall-clock time drops.
+    `verify_shots` sets the shots of the Step-4 verification runs (default 4 * shots).
     Returns a CalibrationResult whose `extra` holds the per-step breakdown.
     """
     t0 = time.time()
@@ -318,7 +335,8 @@ def hierarchical_calibration(gci_dev, gci_ref, x_start, loader_dev, loader_ref,
     # Step 1 -- loader
     if loader_result is None:
         loader_result = bayesian_opt(loader_dev, loader_ref, x_start[:n], shots,
-                                     budget=loader_budget, half_width=half_width, seed=seed)
+                                     budget=loader_budget, half_width=half_width, seed=seed,
+                                     batch=batch)
     x1 = x_start.copy()
     x1[:n] = loader_result.x_best
     steps["step1_loader_bo"] = {"n_evals": loader_result.n_evals, "x_deg": np.rad2deg(x1).tolist()}
@@ -327,7 +345,7 @@ def hierarchical_calibration(gci_dev, gci_ref, x_start, loader_dev, loader_ref,
     # Step 2 -- asset angles
     sub = SubspaceDevice(gci_dev, x1, [n, n + 1])
     r2 = bayesian_opt(sub, gci_ref, x1[[n, n + 1]], shots, budget=asset_budget,
-                      half_width=half_width, seed=seed)
+                      half_width=half_width, seed=seed, batch=batch)
     x2 = x1.copy()
     x2[[n, n + 1]] = r2.x_best
     steps["step2_asset_bo"] = {"n_evals": r2.n_evals, "x_deg": np.rad2deg(x2).tolist()}
@@ -335,14 +353,14 @@ def hierarchical_calibration(gci_dev, gci_ref, x_start, loader_dev, loader_ref,
 
     # Step 3 -- joint refinement
     r3 = spsa(gci_dev, gci_ref, x2, shots, n_iter=refine_iter, c=0.06,
-              target_first_step=0.05, seed=seed)
+              target_first_step=0.05, seed=seed, batch=batch)
     steps["step3_joint_spsa"] = {"n_evals": r3.n_evals, "x_deg": np.rad2deg(r3.x_best).tolist()}
     history += r3.history
 
     # Step 4 -- verification (cost counted)
-    ver_shots = 4 * shots
-    f2 = score(gci_dev, gci_ref, x2, ver_shots)[0]
-    f3 = score(gci_dev, gci_ref, r3.x_best, ver_shots)[0]
+    ver_shots = verify_shots if verify_shots is not None else 4 * shots
+    f2 = score(gci_dev, gci_ref, x2, ver_shots, batch=batch)[0]
+    f3 = score(gci_dev, gci_ref, r3.x_best, ver_shots, batch=batch)[0]
     x_best = r3.x_best if f3 >= f2 else x2
     steps["step4_verification"] = {"n_evals": 6, "fidelity_step2": f2, "fidelity_step3": f3,
                                    "kept": "step3" if f3 >= f2 else "step2"}
