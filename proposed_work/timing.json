@@ -1,0 +1,96 @@
+{
+  "pipeline": "proposed_work",
+  "started": "2026-10-11 11:05:53",
+  "finished": "2026-10-11 11:06:16",
+  "total_seconds": 23.735,
+  "stages": [
+    {
+      "stage": "Stage 1 - Classical GCI model",
+      "start": "11:05:53.256",
+      "end": "11:05:53.940",
+      "seconds": 0.684,
+      "circuit_runs": 0,
+      "shots": 0
+    },
+    {
+      "stage": "Stage 2 - Quantum encoding",
+      "start": "11:05:53.950",
+      "end": "11:05:53.952",
+      "seconds": 0.003,
+      "circuit_runs": 0,
+      "shots": 0
+    },
+    {
+      "stage": "Stage 3 - Circuit design",
+      "start": "11:05:53.958",
+      "end": "11:05:53.960",
+      "seconds": 0.002,
+      "circuit_runs": 0,
+      "shots": 0
+    },
+    {
+      "stage": "Stage 4 - Classical training (parameter shift + Adam)",
+      "start": "11:05:53.968",
+      "end": "11:05:54.700",
+      "seconds": 0.732,
+      "circuit_runs": 0,
+      "shots": 0
+    },
+    {
+      "stage": "Stage 5 - Transpilation (SABRE) + noisy chip",
+      "start": "11:05:54.711",
+      "end": "11:05:54.764",
+      "seconds": 0.052,
+      "circuit_runs": 0,
+      "shots": 0
+    },
+    {
+      "stage": "Stage 6 - Calibration: automated 6B + readout mitigation",
+      "start": "11:05:54.773",
+      "end": "11:06:00.993",
+      "seconds": 6.22,
+      "circuit_runs": 444,
+      "shots": 1776000
+    },
+    {
+      "stage": "Stage 7 - Execution + readout mitigation",
+      "start": "11:06:01.003",
+      "end": "11:06:02.535",
+      "seconds": 1.532,
+      "circuit_runs": 40,
+      "shots": 800000
+    },
+    {
+      "stage": "Stage 7b - Zero-noise extrapolation (add-on)",
+      "start": "11:06:02.546",
+      "end": "11:06:07.846",
+      "seconds": 5.301,
+      "circuit_runs": 120,
+      "shots": 2400000
+    },
+    {
+      "stage": "Stage 8 - Classical post-processing",
+      "start": "11:06:07.853",
+      "end": "11:06:07.855",
+      "seconds": 0.002,
+      "circuit_runs": 0,
+      "shots": 0
+    },
+    {
+      "stage": "Stage 9 - Fidelity gate (ACCEPT / RE-CALIBRATE)",
+      "start": "11:06:07.863",
+      "end": "11:06:07.864",
+      "seconds": 0.002,
+      "circuit_runs": 0,
+      "shots": 0
+    },
+    {
+      "stage": "Drift event - automatic detection + recalibration",
+      "start": "11:06:07.873",
+      "end": "11:06:16.976",
+      "seconds": 9.104,
+      "circuit_runs": 653,
+      "shots": 2612000
+    }
+  ]
+}
