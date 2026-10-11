@@ -1,0 +1,74 @@
+{
+  "pipeline": "proposed_work",
+  "registers": {
+    "2q": {
+      "calibration_runs": 204,
+      "rem_calibration_runs": 12,
+      "fidelity_zne": 0.9969509154013366,
+      "fidelity_vs_ideal": 0.9820046681460657,
+      "fidelity_vs_ideal_std": 0.0014470937946492375,
+      "fidelity_vs_classical": 0.9823660230836452,
+      "p_default": 0.25823018005137466,
+      "expected_loss": 258.23018005137465,
+      "var95": 1000.0,
+      "classical_var95": 1000.0,
+      "var_matches_classical": true,
+      "decision": "ACCEPT",
+      "drift": {
+        "fidelity_before": 0.6284699869395404,
+        "fidelity_after": 0.975775732940925,
+        "recovery_runs": 423,
+        "rounds": 2,
+        "log": [
+          {
+            "round": 0,
+            "fidelity": 0.6284699869395404,
+            "decision": "RE-CALIBRATE"
+          },
+          {
+            "round": 1,
+            "fidelity": 0.960649405729474,
+            "decision": "RE-CALIBRATE"
+          },
+          {
+            "round": 2,
+            "fidelity": 0.975775732940925,
+            "decision": "ACCEPT"
+          }
+        ]
+      }
+    },
+    "3q": {
+      "calibration_runs": 204,
+      "rem_calibration_runs": 24,
+      "fidelity_zne": 0.9926385271391951,
+      "fidelity_vs_ideal": 0.9938972707968482,
+      "fidelity_vs_ideal_std": 0.0005573606464380617,
+      "fidelity_vs_classical": 0.8205051968048082,
+      "p_default": 0.25430408075814837,
+      "expected_loss": 254.30408075814836,
+      "var95": 1000.0,
+      "classical_var95": 1000.0,
+      "var_matches_classical": true,
+      "decision": "ACCEPT",
+      "drift": {
+        "fidelity_before": 0.6960043808398646,
+        "fidelity_after": 0.9882903621991529,
+        "recovery_runs": 230,
+        "rounds": 1,
+        "log": [
+          {
+            "round": 0,
+            "fidelity": 0.6960043808398646,
+            "decision": "RE-CALIBRATE"
+          },
+          {
+            "round": 1,
+            "fidelity": 0.9882903621991529,
+            "decision": "ACCEPT"
+          }
+        ]
+      }
+    }
+  }
+}
