@@ -3,8 +3,8 @@
   "registers": {
     "2q": {
       "calibration_runs": 347,
-      "fidelity_vs_ideal": 0.9001855722136136,
-      "fidelity_vs_ideal_std": 0.0026996542827472368,
+      "fidelity_vs_ideal": 0.9001855722136138,
+      "fidelity_vs_ideal_std": 0.002699654282747205,
       "fidelity_vs_classical": 0.9005981412149076,
       "p_default": 0.24814,
       "expected_loss": 248.14,
@@ -22,7 +22,7 @@
     "3q": {
       "calibration_runs": 477,
       "fidelity_vs_ideal": 0.9478044177855018,
-      "fidelity_vs_ideal_std": 0.0013578998085207927,
+      "fidelity_vs_ideal_std": 0.0013578998085207196,
       "fidelity_vs_classical": 0.802019954491461,
       "p_default": 0.28735,
       "expected_loss": 287.35,
@@ -31,7 +31,7 @@
       "var_matches_classical": true,
       "decision": "not available (no acceptance check in the base paper)",
       "drift": {
-        "fidelity_before": 0.7619179967894417,
+        "fidelity_before": 0.7619179967894414,
         "fidelity_after": 0.9570977814058013,
         "recovery_runs": 479,
         "rounds": 1
