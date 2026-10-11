@@ -4,35 +4,30 @@
     "2q": {
       "calibration_runs": 204,
       "rem_calibration_runs": 12,
-      "fidelity_zne": 0.9969509154013366,
-      "fidelity_vs_ideal": 0.9820046681460657,
-      "fidelity_vs_ideal_std": 0.0014470937946492375,
-      "fidelity_vs_classical": 0.9823660230836452,
-      "p_default": 0.25823018005137466,
-      "expected_loss": 258.23018005137465,
+      "fidelity_zne": 0.9981495596930101,
+      "fidelity_vs_ideal": 0.9829856219219119,
+      "fidelity_vs_ideal_std": 0.0015561084223718958,
+      "fidelity_vs_classical": 0.9833489141875722,
+      "p_default": 0.24858843607555037,
+      "expected_loss": 248.58843607555036,
       "var95": 1000.0,
       "classical_var95": 1000.0,
       "var_matches_classical": true,
       "decision": "ACCEPT",
       "drift": {
-        "fidelity_before": 0.6284699869395404,
-        "fidelity_after": 0.975775732940925,
-        "recovery_runs": 423,
-        "rounds": 2,
+        "fidelity_before": 0.5967310760473823,
+        "fidelity_after": 0.9815290988181911,
+        "recovery_runs": 218,
+        "rounds": 1,
         "log": [
           {
             "round": 0,
-            "fidelity": 0.6284699869395404,
+            "fidelity": 0.5967310760473823,
             "decision": "RE-CALIBRATE"
           },
           {
             "round": 1,
-            "fidelity": 0.960649405729474,
-            "decision": "RE-CALIBRATE"
-          },
-          {
-            "round": 2,
-            "fidelity": 0.975775732940925,
+            "fidelity": 0.9815290988181911,
             "decision": "ACCEPT"
           }
         ]
@@ -41,30 +36,30 @@
     "3q": {
       "calibration_runs": 204,
       "rem_calibration_runs": 24,
-      "fidelity_zne": 0.9926385271391951,
-      "fidelity_vs_ideal": 0.9938972707968482,
-      "fidelity_vs_ideal_std": 0.0005573606464380617,
-      "fidelity_vs_classical": 0.8205051968048082,
-      "p_default": 0.25430408075814837,
-      "expected_loss": 254.30408075814836,
+      "fidelity_zne": 0.9967967251867259,
+      "fidelity_vs_ideal": 0.9921393390717567,
+      "fidelity_vs_ideal_std": 0.0007438133580921462,
+      "fidelity_vs_classical": 0.813595457637964,
+      "p_default": 0.2683744172528221,
+      "expected_loss": 268.37441725282207,
       "var95": 1000.0,
       "classical_var95": 1000.0,
       "var_matches_classical": true,
       "decision": "ACCEPT",
       "drift": {
-        "fidelity_before": 0.6960043808398646,
-        "fidelity_after": 0.9882903621991529,
+        "fidelity_before": 0.6807451759431442,
+        "fidelity_after": 0.9850269903450025,
         "recovery_runs": 230,
         "rounds": 1,
         "log": [
           {
             "round": 0,
-            "fidelity": 0.6960043808398646,
+            "fidelity": 0.6807451759431442,
             "decision": "RE-CALIBRATE"
           },
           {
             "round": 1,
-            "fidelity": 0.9882903621991529,
+            "fidelity": 0.9850269903450025,
             "decision": "ACCEPT"
           }
         ]
